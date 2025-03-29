@@ -1,0 +1,11 @@
+crewai-tools     
+duckduckgo_search
+h2               
+httptools        
+langchain-ollama 
+pip             
+pyngrok         
+streamlit       
+watchfiles      
+websockets      
+wheel             
