@@ -4,6 +4,13 @@ from crewai import Crew, Process
 import streamlit as st
 from pyngrok import ngrok
 
+# Ensure ngrok tunnel starts only once
+if "ngrok_url" not in st.session_state:
+    ngrok.kill()  # Kill any existing tunnels to avoid duplicates
+    public_url = ngrok.connect(8501)  # Start a new ngrok tunnel
+    st.session_state.ngrok_url = public_url
+print((f"Public URL: {st.session_state.ngrok_url}"))
+
 
 st.title("✈️ Your's Trip Planner Agent")
 
@@ -17,14 +24,13 @@ date_from = st.date_input("📅 Departure Date")
 date_to = st.date_input("📅 Return Date")
 interests = st.text_area("🎯 Your Interests (Nature, Food, Adventure) 🍕🏞️🎢", "Adventure & Great Food")
 
-public_url = ngrok.connect(8501)
-print(public_url)
+
 
 if st.button("🚀 Generate Travel Plan"):
     if not from_city or not destination_city or not date_from or not date_to or not interests:
         st.error("⚠️ Please fill in all fields before generating your travel plan.")
     else:
-        st.write("⚙️Preparing Your Plan.....(Just 2 Min 😊)")
+        st.write("⚙️Preparing Your Plan.....(Just 5-6 Min. 😊)")
 
         loc_task = location_task(location_expert, from_city, destination_city, date_from, date_to)
         guid_task = guide_task(guide_expert, destination_city, interests, date_from, date_to)

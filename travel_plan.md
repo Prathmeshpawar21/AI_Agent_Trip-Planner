@@ -1,0 +1,1 @@
+The best places to visit in India are the Taj Mahal in Agra, the Red Fort in Delhi, the Golden Temple in Amritsar, and the beaches of Goa. These destinations offer a mix of history, culture, spirituality, and natural beauty that showcases the diversity and richness of Indian heritage.
